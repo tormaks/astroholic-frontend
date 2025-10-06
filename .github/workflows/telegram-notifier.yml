@@ -2,9 +2,9 @@ name: Telegram Notifications
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   issues:
     types: [opened, edited, deleted]
 
