@@ -1,0 +1,67 @@
+{
+  "name": "astroholic-miniapp-frontend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Astroholic is your pocket guide to the stars. Explore your natal chart, discover how planets shape your personality, and dive into the world of zodiac signs and compatibility. Simple, elegant, and made for true astrology lovers. ✨",
+  "homepage": "https://tormaks.github.io/astroholic-miniapp-frontend",
+  "scripts": {
+    "deploy": "gh-pages -d build",
+    "dev": "vite",
+    "dev:https": "cross-env HTTPS=true vite",
+    "build": "tsc --noEmit && vite build",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+    "preview": "vite preview",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tormaks/astroholic-miniapp-frontend.git"
+  },
+  "keywords": [
+    "telegram",
+    "miniapp",
+    "astrology"
+  ],
+  "author": "https://github.com/tormaks",
+  "eslintConfig": {
+    "extends": [
+      "./eslintrc.js"
+    ]
+  },
+  "dependencies": {
+    "@telegram-apps/sdk-react": "^3.3.6",
+    "@telegram-apps/telegram-ui": "^2.1.9",
+    "@tonconnect/ui-react": "^2.2.0",
+    "eruda": "^3.4.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@types/node": "^20.19.11",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "@vitejs/plugin-react-swc": "^3.11.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-i18next": "^6.0.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^6.3.0",
+    "globals": "^15.15.0",
+    "sass-embedded": "^1.93.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.40.0",
+    "vite": "^6.3.5",
+    "vite-plugin-mkcert": "^1.17.8",
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

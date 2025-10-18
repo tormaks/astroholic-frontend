@@ -1,0 +1,13 @@
+.component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: red;
+  font-size: 32px;
+
+  img {
+    width: 100%;
+  }
+}

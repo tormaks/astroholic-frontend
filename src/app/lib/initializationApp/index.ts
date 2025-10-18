@@ -1,0 +1,1 @@
+export { initializationApp } from './initializationApp';
