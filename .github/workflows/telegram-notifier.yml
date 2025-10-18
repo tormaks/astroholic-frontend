@@ -1,0 +1,27 @@
+name: Telegram Notifications
+
+on:
+  push:
+    branches: [master, develop]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip actions]') && !contains(github.event.head_commit.message, '[actions skip]')"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Send Telegram message to topic
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          THREAD_ID: ${{ secrets.TELEGRAM_THREAD_ID }}
+        run: |
+          CHANGED_LINES=$(git diff --shortstat HEAD~1 HEAD | grep -o '[0-9]\+ insertion' | grep -o '[0-9]\+' || echo "0")
+          MESSAGE="🚨 <b>[${{ github.ref_name }}] New changes</b> %0A%0A🏷 <b>Repository:</b> ${{ github.repository }}%0A📝 <b>Commit:</b> ${{ github.event.head_commit.message }}%0A📊 <b>Changed lines:</b> ${CHANGED_LINES}%0A%0A🔗 <b>Compare URL:</b> ${{ github.event.compare }}"
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d chat_id="${CHAT_ID}" \
+            -d message_thread_id="${THREAD_ID}" \
+            -d text="${MESSAGE}" \
+            -d parse_mode="HTML"
